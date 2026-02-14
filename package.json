@@ -1,0 +1,10 @@
+{
+  "name": "ai-portfolio-generator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix backend",
+    "start": "npm start --prefix backend",
+    "dev": "npm run dev --prefix backend"
+  }
+}

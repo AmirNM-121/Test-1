@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Generate customized developer portfolio projects with AI." />
+    <title>AI Portfolio Generator</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel">
+        <h1>AI Developer Portfolio Generator</h1>
+        <p>Create full-stack portfolio code using Groq API, preview it, and download as ZIP.</p>
+
+        <form id="portfolio-form">
+          <div class="grid">
+            <label>Name <input name="name" required /></label>
+            <label>Professional Title <input name="title" required /></label>
+            <label class="full">Bio <textarea name="bio" rows="3" required></textarea></label>
+            <label>Skills (comma separated) <input name="skills" required placeholder="JavaScript, Node.js, React" /></label>
+            <label>Design Style
+              <select name="designStyle">
+                <option value="minimal">Minimal</option>
+                <option value="modern" selected>Modern</option>
+                <option value="dark">Dark Theme</option>
+              </select>
+            </label>
+            <label>Frontend Type
+              <select name="framework">
+                <option value="html" selected>HTML/CSS/JS</option>
+                <option value="react">React</option>
+              </select>
+            </label>
+          </div>
+
+          <h2>Contact</h2>
+          <div class="grid">
+            <label>Email <input name="email" type="email" required /></label>
+            <label>Phone <input name="phone" /></label>
+            <label>Location <input name="location" /></label>
+            <label>LinkedIn URL <input name="linkedin" type="url" placeholder="https://" /></label>
+            <label>GitHub URL <input name="github" type="url" placeholder="https://" /></label>
+          </div>
+
+          <h2>Projects</h2>
+          <div id="projects"></div>
+          <button type="button" class="ghost" id="add-project">+ Add project</button>
+
+          <h2>Experience</h2>
+          <div id="experience"></div>
+          <button type="button" class="ghost" id="add-experience">+ Add experience</button>
+
+          <h2>Education</h2>
+          <div id="education"></div>
+          <button type="button" class="ghost" id="add-education">+ Add education</button>
+
+          <button type="submit" class="primary">Generate Portfolio</button>
+        </form>
+
+        <p id="status"></p>
+      </section>
+
+      <section class="panel">
+        <div class="preview-head">
+          <h2>Preview</h2>
+          <button id="download-btn" disabled>Download ZIP</button>
+        </div>
+        <iframe id="preview"></iframe>
+      </section>
+    </main>
+
+    <template id="project-template">
+      <div class="item">
+        <label>Project Name <input data-field="name" required /></label>
+        <label>Description <textarea data-field="description" rows="2" required></textarea></label>
+        <label>Tech Stack (comma separated) <input data-field="techStack" /></label>
+        <label>Live Link <input data-field="link" type="url" placeholder="https://" /></label>
+        <label>Repo URL <input data-field="repo" type="url" placeholder="https://" /></label>
+      </div>
+    </template>
+
+    <template id="experience-template">
+      <div class="item">
+        <label>Role <input data-field="role" required /></label>
+        <label>Company <input data-field="company" required /></label>
+        <label>Duration <input data-field="duration" required /></label>
+        <label>Details <textarea data-field="details" rows="2" required></textarea></label>
+      </div>
+    </template>
+
+    <template id="education-template">
+      <div class="item">
+        <label>Institution <input data-field="institution" required /></label>
+        <label>Degree <input data-field="degree" required /></label>
+        <label>Year <input data-field="year" required /></label>
+      </div>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
